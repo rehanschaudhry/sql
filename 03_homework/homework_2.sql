@@ -19,7 +19,7 @@ ORDER BY customer_last_name, customer_first_name ASC LIMIT 10
 	
 SELECT * 
 FROM customer_purchases 
-WHERE product_id = 9 or product_id = 4
+WHERE product_id = 4 or product_id = 9
 
 /*2. Write a query that returns all customer purchases and a new calculated column 'price' (quantity * cost_to_customer_per_qty), 
 filtered by vendor IDs between 8 and 10 (inclusive) using either:
