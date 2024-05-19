@@ -48,6 +48,9 @@ INSERT INTO new_vendor (vendor_id,vendor_name,vendor_type, vendor_owner_first_na
 HINT: you might need to search for strfrtime modifers sqlite on the web to know what the modifers for month 
 and year are! */
 
+SELECT  customer_id, strftime('%m', market_date) as month, strftime('%Y', market_date) as year
+FROM customer_purchases
+
 /* 2. Using the previous query as a base, determine how much money each customer spent in April 2019. 
 Remember that money spent is quantity*cost_to_customer_per_qty. 
 
