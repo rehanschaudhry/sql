@@ -39,7 +39,7 @@ CREATE TEMP TABLE new_vendor AS
 SELECT * FROM vendor;
 
 INSERT INTO new_vendor (vendor_id,vendor_name,vendor_type, vendor_owner_first_name, vendor_owner_last_name) VALUES 
- (10,'Organic Meadow','Dairy', 'Pont', 'Dave');
+ (10,'Thomass Superfood Store','Fresh Focused store', 'Thomas', 'Rosenthal');
 
 
 -- Date
