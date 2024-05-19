@@ -56,4 +56,7 @@ Remember that money spent is quantity*cost_to_customer_per_qty.
 
 HINTS: you will need to AGGREGATE, GROUP BY, and filter...
 but remember, STRFTIME returns a STRING for your WHERE statement!! */
-
+SELECT  customer_id, strftime('%m', market_date) as month, strftime('%Y', market_date) as year, sum(quantity * cost_to_customer_per_qty) as price 
+FROM customer_purchases
+WHERE month = '07' and year = '2019'
+GROUP BY customer_id
