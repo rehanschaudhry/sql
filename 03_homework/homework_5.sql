@@ -46,6 +46,48 @@ HINT: There are a possibly a few ways to do this query, but if you're struggling
 3) Query the second temp table twice, once for the best day, once for the worst day, 
 with a UNION binding them. */
 
+-- Step 1: Create a CTE to calculate total sales per market date
+WITH SalesByDate AS (
+    SELECT 
+        market_date,
+        SUM(cost_to_customer_per_qty * quantity) AS total_sales
+    FROM 
+        customer_purchases
+    GROUP BY 
+        market_date
+),
+
+-- Step 2: Create another CTE with a rank window function to rank the dates by total sales
+RankedSales AS (
+    SELECT 
+        market_date,
+        total_sales,
+        RANK() OVER (ORDER BY total_sales DESC) AS rank_high_to_low,
+        RANK() OVER (ORDER BY total_sales ASC) AS rank_low_to_high
+    FROM 
+        SalesByDate
+)
+
+-- Step 3: Query the RankedSales CTE to get the best and worst day, and combine them with UNION
+SELECT 
+    market_date,
+    total_sales,
+    'Highest Sales Day' AS sales_type
+FROM 
+    RankedSales
+WHERE 
+    rank_high_to_low = 1
+
+UNION
+
+SELECT 
+    market_date,
+    total_sales,
+    'Lowest Sales Day' AS sales_type
+FROM 
+    RankedSales
+WHERE 
+    rank_low_to_high = 1;
 
 
 -- Cross Join
