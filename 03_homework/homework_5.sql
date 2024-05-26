@@ -170,4 +170,16 @@ Finally, make sure you have a WHERE statement to update the right row,
 	you'll need to use product_units.product_id to refer to the correct row within the product_units table. 
 When you have all of these components, you can run the update statement. */
 
+ALTER TABLE product_units
+ADD current_quantity INT;
+
+
+UPDATE product_units
+SET current_quantity = (
+    SELECT COALESCE(MAX(quantity), 0)  -- Step 2.1: Get the last quantity per product
+    FROM vendor_inventory
+    WHERE vendor_inventory.product_id = product_units.product_id
+);
+
+
 
