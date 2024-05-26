@@ -101,6 +101,20 @@ Think a bit about the row counts: how many distinct vendors, product names are t
 How many customers are there (y). 
 Before your final group by you should have the product of those two queries (x*y).  */
 
+-- Cross join to get all combinations of vendors and products
+WITH VendorProduct AS (
+    SELECT v.vendor_id, v.vendor_name, p.product_id, p.product_name
+    FROM vendor v
+    CROSS JOIN product p
+)
+-- Calculate revenue for each combination
+SELECT
+    vp.vendor_name,
+    vp.product_name,
+    SUM(5 * vi.original_price) AS total_revenue
+FROM VendorProduct vp
+JOIN vendor_inventory vi ON vp.vendor_id = vi.vendor_id AND vp.product_id = vi.product_id
+GROUP BY vp.vendor_name, vp.product_name;
 
 
 -- INSERT
