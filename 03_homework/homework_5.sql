@@ -120,7 +120,7 @@ ADD current_quantity INT;
 
 UPDATE product_units
 SET current_quantity = (
-    SELECT COALESCE(MAX(quantity), 0)  -- Step 2.1: Get the last quantity per product
+    SELECT COALESCE(MAX(quantity), 0) 
     FROM vendor_inventory
     WHERE vendor_inventory.product_id = product_units.product_id
 );
