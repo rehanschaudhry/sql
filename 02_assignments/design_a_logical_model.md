@@ -11,10 +11,14 @@ At the minimum it should have employee, order, sales, customer, and book entitie
 ## Question 2
 We want to create employee shifts, splitting up the day into morning and evening. Add this to the ERD.
 
+<img width="403" alt="image" src="https://github.com/rehanschaudhry/sql/assets/35706356/3008c956-27b0-4511-84f7-8f7ced9a28d2">
+
+
 ## Question 3
 The store wants to keep customer addresses. Propose two architectures for the CUSTOMER_ADDRESS table, one that will retain changes, and another that will overwrite. Which is type 1, which is type 2?
 
 _Hint, search type 1 vs type 2 slowly changing dimensions._
+
 
 Bonus: Are there privacy implications to this, why or why not?
 ```
