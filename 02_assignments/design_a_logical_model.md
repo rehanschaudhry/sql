@@ -5,17 +5,33 @@ Create a logical model for a small bookstore. 📚
 
 At the minimum it should have employee, order, sales, customer, and book entities (tables). Determine sensible column and table design based on what you know about these concepts. Keep it simple, but work out sensible relationships to keep tables reasonably sized. Include a date table. There are several tools online you can use, I'd recommend [_Draw.io_](https://www.drawio.com/) or [_LucidChart_](https://www.lucidchart.com/pages/).
 
+<img width="464" alt="image" src="https://github.com/rehanschaudhry/sql/assets/35706356/bd5a510b-aa05-41e5-a6e5-a80c8611469f">
+
+
 ## Question 2
 We want to create employee shifts, splitting up the day into morning and evening. Add this to the ERD.
+
+<img width="403" alt="image" src="https://github.com/rehanschaudhry/sql/assets/35706356/3008c956-27b0-4511-84f7-8f7ced9a28d2">
+
 
 ## Question 3
 The store wants to keep customer addresses. Propose two architectures for the CUSTOMER_ADDRESS table, one that will retain changes, and another that will overwrite. Which is type 1, which is type 2?
 
 _Hint, search type 1 vs type 2 slowly changing dimensions._
 
+SCD Type 1 Overwriting
+
+<img width="431" alt="image" src="https://github.com/rehanschaudhry/sql/assets/35706356/10b191ab-4b99-4058-8f65-3e394cbcd026">
+
+SCD Type 2 - Adding New Rows
+
+<img width="390" alt="image" src="https://github.com/rehanschaudhry/sql/assets/35706356/e964e7e4-1f38-48ad-9102-fa8360b5c760">
+
+
+
 Bonus: Are there privacy implications to this, why or why not?
 ```
-Your answer...
+With SCD Type 2, there would be potentially issues with data and privacy since you have all the historical addess and contact info of the customer. 
 ```
 
 ## Question 4
@@ -23,7 +39,11 @@ Review the AdventureWorks Schema [here](https://i.stack.imgur.com/LMu4W.gif)
 
 Highlight at least two differences between it and your ERD. Would you change anything in yours?
 ```
-Your answer...
+One difference is that the AdventureWorks schema covers a broader scope, including manufacturing, sales, purchasing, and human resources, making it suitable for a comprehensive enterprise-level database. On the other hand The bookstore schema focuses on a specific business domain, primarily around book sales and inventory management.
+Another difference is AdventureWorks schema is designed with data warehousing in mind. It includes features to track historical data and changes over time, which is crucial for business intelligence and analytics. On the other hand the bookstore schema includes a simpler approach to historical data, primarily through the use of Type 1 and Type 2 SCD for customer addresses. However, it does not encompass a full data warehousing approach.
+
+Anything to chang in my design:
+Examining the AdventureWorks schema, I would invest time and resources in creating a data warehouse for the bookstore. With this data, I could perform trend analysis, understand customer relationships, and manage inventory more effectively. This approach would help me gain insights into my customers and reduce costs by optimizing inventory
 ```
 
 # Criteria
