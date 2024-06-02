@@ -19,10 +19,19 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 
 _Hint, search type 1 vs type 2 slowly changing dimensions._
 
+SCD Type 1 Overwriting
+
+<img width="431" alt="image" src="https://github.com/rehanschaudhry/sql/assets/35706356/10b191ab-4b99-4058-8f65-3e394cbcd026">
+
+SCD Type 2 - Adding New Rows
+
+<img width="390" alt="image" src="https://github.com/rehanschaudhry/sql/assets/35706356/e964e7e4-1f38-48ad-9102-fa8360b5c760">
+
+
 
 Bonus: Are there privacy implications to this, why or why not?
 ```
-Your answer...
+With SCD Type 2, there would be potentially issues with data and privacy since you have all the historical addess and contact info of the customer. 
 ```
 
 ## Question 4
